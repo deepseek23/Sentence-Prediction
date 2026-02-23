@@ -53,7 +53,7 @@ word_prediction/
 │   └── notebook/
 │   |    └── lstm_gru.ipynb      # Training & experimentation notebook
 │   |────data/
-|         ├── qoutes.csv        # Training dataset      
+|         ├── quotes.csv        # Training dataset      
 ├── .gitignore
 └── README.md
 ```
