@@ -50,10 +50,10 @@ word_prediction/
 │   │   ├── lstm_model.h5       # Trained LSTM model
 │   │   ├── tokenizer.pkl       # Fitted Keras tokenizer
 │   │   ├── max_len.pkl         # Saved max sequence length
-│   │   └── qoute_dataset.csv   # Training dataset (quotes)
 │   └── notebook/
-│       └── lstm_gru.ipynb      # Training & experimentation notebook
-│
+│   |    └── lstm_gru.ipynb      # Training & experimentation notebook
+│   |────data/
+|         ├── qoutes.csv        # Training dataset      
 ├── .gitignore
 └── README.md
 ```
