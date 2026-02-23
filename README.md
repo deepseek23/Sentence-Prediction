@@ -24,10 +24,9 @@ This project implements a **sequence-to-word** LSTM model trained on a quotes da
 
 ---
 
-## Demo
+## Demo Video
 
-> Type a sentence in the input box and watch the model suggest the next word in real-time — no buttons, no waiting.
-
+Watch here: https://www.youtube.com/watch?v=bYnn0d1-7kw
 ---
 
 ## Features
