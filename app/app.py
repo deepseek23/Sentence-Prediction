@@ -26,7 +26,9 @@ def load_resources():
 
 
 model, tokenizer, max_len = load_resources()
-index_word = {index: word for word, index in tokenizer.word_index.items()}
+index_word = getattr(tokenizer, "index_word", None) or {
+    index: word for word, index in tokenizer.word_index.items()
+}
 
 
 # --------------------------------------------------
@@ -34,11 +36,20 @@ index_word = {index: word for word, index in tokenizer.word_index.items()}
 # --------------------------------------------------
 
 def predict_next_word(text):
-    sequence = tokenizer.texts_to_sequences([text])[0]
-    sequence = pad_sequences([sequence], maxlen=max_len - 1, padding="pre")
+    cleaned = text.strip()
+    if not cleaned:
+        return ""
+
+    sequences = tokenizer.texts_to_sequences([cleaned])
+    if not sequences or not sequences[0]:
+        return ""
+
+    sequence = pad_sequences(sequences, maxlen=max_len - 1, padding="pre")
 
     preds = model.predict(sequence, verbose=0)
-    predicted_index = np.argmax(preds)
+    predicted_index = int(np.argmax(preds, axis=-1)[0])
+    if predicted_index == 0:
+        return ""
 
     return index_word.get(predicted_index, "")
 
